@@ -43,7 +43,7 @@ public class GlobalExceptionHandler {
             String[] split = message.split(" ");
             String username = split[2];
             String msg= username+ MessageConstant.ALREADY_EXISTS;
-            return Result.error("msg");
+            return Result.error(msg);
         }else{
             return Result.error(MessageConstant.UNKNOWN_ERROR);
         }
