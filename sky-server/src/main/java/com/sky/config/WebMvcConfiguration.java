@@ -1,6 +1,7 @@
 package com.sky.config;
 
 import com.sky.interceptor.JwtTokenAdminInterceptor;
+import com.sky.json.JacksonObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -72,9 +73,8 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
 
     protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         log.info("开始进行消息转换器配置...");
-        //创建一个消息转换器
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-        //需要为消息转换器设置一个对象转换器,对象转换器会将Java数据转化为Json数据
+        converter.setObjectMapper(new JacksonObjectMapper());
         converters.add(0,converter);
     }
 }
